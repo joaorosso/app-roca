@@ -1,7 +1,7 @@
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
   <div class="navbar-brand col-md-3 col-lg-2 px-md-5">FRUTAS GAVEA</div>
   <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
+    <li *ngIf="mostraSair()" class="nav-item text-nowrap">
       <a class="nav-link" (click)="logout()">Sair</a>
     </li>
   </ul>

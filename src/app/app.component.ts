@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastyConfig, ToastyService } from 'ng2-toasty';
 import { Router } from '@angular/router';
 import { LogoutService } from './seguranca/logout.service';
@@ -16,6 +16,10 @@ export class AppComponent {
     private router: Router
   ) {
     this.toastyConfig.theme = 'bootstrap';
+  }
+
+  mostraSair() {
+    return this.router.url !== '/login';
   }
 
   logout() {
