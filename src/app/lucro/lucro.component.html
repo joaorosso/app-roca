@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-between pb-2">
+    <button type="button"
+            class="btn btn-sm btn-outline-secondary"
+            routerLink="/inicio">
+        Voltar
+    </button>
+    <div class="roca-title">
+        {{roca?.descricao}}
+    </div>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+            <button type="button"
+                    class="btn btn-sm btn-outline-secondary"
+                    [routerLink]="['/despesas', rocaId]">Despesas</button>
+            <button type="button"
+                    class="btn btn-sm btn-outline-secondary active">Lucros</button>
+        </div>
+        <button type="button"
+                class="btn btn-sm btn-outline-secondary"
+                [routerLink]="['/novo-lucro', rocaId]"
+                *ngIf="!roca?.fechado">
+            Novo lucro
+        </button>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
+            <tr>
+                <th>DATA</th>
+                <th>NOME/EMPRESA</th>
+                <th>QTD</th>
+                <th>VALOR UN.</th>
+                <th>VALOR TOTAL</th>
+                <th>AÇÔES</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="lucros">
+            <tr *ngFor="let lucro of lucros">
+                <td>{{lucro.data | date : 'shortDate'}}</td>
+                <td>{{lucro.descricao}}</td>
+                <td>{{lucro.quantidade}}</td>
+                <td>{{lucro.valorUnitario | currency : 'BRL'}}</td>
+                <td>{{lucro.total | currency : 'BRL'}}</td>
+                <td>
+                    <button class="btn btn-sm btn-danger"
+                            (click)="remover(lucro)"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div *ngIf="!lucros"
+         class="text-center">
+        <div class="spinner-border text-secondary"
+             role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>
+
+<div class="total">
+    TOTAL: {{roca?.lucro | currency : 'BRL'}}
+</div>
+<div class="despesas">
+    DESPESAS: {{roca?.despesa | currency : 'BRL'}}
+</div>
+<div class="lucro">
+    LUCRO: {{roca?.lucro - roca?.despesa | currency : 'BRL'}}
+</div>
