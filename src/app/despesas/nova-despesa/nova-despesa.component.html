@@ -9,7 +9,9 @@
         <div class="btn-toolbar mb-2 mb-md-0">
             <button type="submit"
                     class="btn btn-sm btn-outline-success"
-                    [disabled]="!form.valid">
+                    [disabled]="!form.valid || loading">
+                <span *ngIf="loading"
+                      class="spinner-border spinner-border-sm mr-1"></span>
                 Salvar
             </button>
         </div>

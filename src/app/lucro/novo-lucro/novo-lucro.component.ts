@@ -7,11 +7,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-novo-lucro',
   templateUrl: './novo-lucro.component.html',
-  styleUrls: ['./novo-lucro.component.scss']
+  styleUrls: ['./novo-lucro.component.scss'],
 })
 export class NovoLucroComponent implements OnInit {
   rocaId: string;
   form: FormGroup;
+  loading: boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -28,17 +29,17 @@ export class NovoLucroComponent implements OnInit {
       data: new Date(),
       descricao: ['', Validators.required],
       quantidade: [0, Validators.required],
-      valorUnitario: [0, Validators.required]
+      valorUnitario: [0, Validators.required],
     });
   }
 
   onSubmit() {
     if (this.form.valid) {
-      this.lucroService.salvar(this.form.value)
-        .subscribe(
-          () => this.router.navigate(['/lucros', this.rocaId]),
-          err => this.toastyService.error(err.error.message)
-        );
+      this.loading = true;
+      this.lucroService.salvar(this.form.value).subscribe(
+        () => this.router.navigate(['/lucros', this.rocaId]),
+        (err) => this.toastyService.error(err.error.message)
+      );
     }
   }
 
