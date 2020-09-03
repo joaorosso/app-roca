@@ -13,13 +13,13 @@
                     class="btn btn-sm btn-outline-secondary"
                     [routerLink]="['/despesas', rocaId]">Despesas</button>
             <button type="button"
-                    class="btn btn-sm btn-outline-secondary active">Lucros</button>
+                    class="btn btn-sm btn-outline-secondary active">Vendas</button>
         </div>
         <button type="button"
                 class="btn btn-sm btn-outline-secondary"
                 [routerLink]="['/novo-lucro', rocaId]"
                 *ngIf="!roca?.fechado">
-            Novo lucro
+            Nova venda
         </button>
     </div>
 </div>
@@ -67,5 +67,5 @@
     DESPESAS: {{roca?.despesa | currency : 'BRL'}}
 </div>
 <div class="lucro">
-    LUCRO: {{roca?.lucro - roca?.despesa | currency : 'BRL'}}
+    VENDAS: {{roca?.lucro - roca?.despesa | currency : 'BRL'}}
 </div>

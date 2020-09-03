@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 
-import { MessageService } from '../message.service';
 import { Observable } from 'rxjs';
 import { Lucro } from '../models/lucro';
 import { MoneyHttp } from '../seguranca/money-http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LucroService {
-  private lucrosUrl = 'http://localhost:8080/lucros';
+  private lucrosUrl = environment.apiUrl + 'lucros';
 
   constructor(
     private http: MoneyHttp
