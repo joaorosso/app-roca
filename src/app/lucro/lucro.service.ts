@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class LucroService {
-  private lucrosUrl = environment.apiUrl + 'lucros';
+  private lucrosUrl = environment.apiUrl + '/lucros';
 
   constructor(
     private http: MoneyHttp
