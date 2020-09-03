@@ -36,7 +36,7 @@
                 <th>AÇÔES</th>
             </tr>
         </thead>
-        <tbody *ngIf="lucros">
+        <tbody *ngIf="!loading">
             <tr *ngFor="let lucro of lucros">
                 <td>{{lucro.data | date : 'shortDate'}}</td>
                 <td>{{lucro.descricao}}</td>
@@ -51,7 +51,7 @@
         </tbody>
     </table>
 
-    <div *ngIf="!lucros"
+    <div *ngIf="loading"
          class="text-center">
         <div class="spinner-border text-secondary"
              role="status">

@@ -20,6 +20,7 @@ export class LucroComponent implements OnInit {
   lucro: number;
   rocaId: number;
   modalRef: BsModalRef;
+  loading: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -44,9 +45,11 @@ export class LucroComponent implements OnInit {
   }
 
   getLucros(): void {
+    this.loading = true;
     this.lucroService.getLucros(this.rocaId)
     .subscribe(lucros => {
       this.lucros = lucros;
+      this.loading = false;
     });
   }
 

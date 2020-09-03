@@ -16,6 +16,7 @@ export class RocasComponent implements OnInit {
   rocas: Roca[];
   modalRef: BsModalRef;
   status: string;
+  loading: boolean;
 
   constructor(
     private rocasService: RocasService,
@@ -42,8 +43,10 @@ export class RocasComponent implements OnInit {
   }
 
   getRocas(status: string = null): void {
+    this.loading = true;
     this.rocasService.getRocas(status).subscribe((rocas) => {
       this.rocas = rocas;
+      this.loading = false;
     });
   }
 

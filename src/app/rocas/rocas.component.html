@@ -33,7 +33,7 @@
                 <th>AÇÕES</th>
             </tr>
         </thead>
-        <tbody *ngIf="rocas">
+        <tbody *ngIf="!loading">
             <tr *ngFor="let roca of rocas">
                 <td>{{roca.descricao}}</td>
                 <td>{{roca.despesa | currency : 'BRL'}}</td>
@@ -59,7 +59,7 @@
         </tbody>
     </table>
 
-    <div *ngIf="!rocas"
+    <div *ngIf="loading"
          class="text-center">
         <div class="spinner-border text-secondary"
              role="status">

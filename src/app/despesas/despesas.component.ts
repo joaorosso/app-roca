@@ -18,6 +18,7 @@ export class DespesasComponent implements OnInit {
   total: number;
   rocaId: number;
   modalRef: BsModalRef;
+  loading: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,10 +42,12 @@ export class DespesasComponent implements OnInit {
   }
 
   getDespesas() {
+    this.loading = true;
     this.despesasService.getDespesas(this.rocaId)
     .subscribe(despesas => {
       this.despesas = despesas;
       this.getTotal();
+      this.loading = false;
     });
   }
 
