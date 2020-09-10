@@ -3,6 +3,10 @@ import { DespesasService } from './../despesas.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { listLocales, defineLocale } from 'ngx-bootstrap/chronos';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
+defineLocale('pt-br', ptBrLocale);
 
 @Component({
   selector: 'app-nova-despesa',
@@ -10,6 +14,8 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./nova-despesa.component.scss'],
 })
 export class NovaDespesaComponent implements OnInit {
+  locale = 'pt-br';
+  locales = listLocales();
   rocaId: string;
   form: FormGroup;
   loading: boolean;
@@ -19,8 +25,11 @@ export class NovaDespesaComponent implements OnInit {
     private despesasService: DespesasService,
     private router: Router,
     private route: ActivatedRoute,
-    private toastyService: ToastyService
-  ) {}
+    private toastyService: ToastyService,
+    private bsLocaleService: BsLocaleService
+  ) {
+    this.bsLocaleService.use(this.locale);
+  }
 
   ngOnInit() {
     this.rocaId = this.route.snapshot.params.rocaId;

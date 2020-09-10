@@ -3,6 +3,10 @@ import { ToastyService } from 'ng2-toasty';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { listLocales, defineLocale } from 'ngx-bootstrap/chronos';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
+defineLocale('pt-br', ptBrLocale);
 
 @Component({
   selector: 'app-novo-lucro',
@@ -10,6 +14,9 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./novo-lucro.component.scss'],
 })
 export class NovoLucroComponent implements OnInit {
+  locale = 'pt-br';
+  locales = listLocales();
+
   rocaId: string;
   form: FormGroup;
   loading: boolean;
@@ -19,8 +26,11 @@ export class NovoLucroComponent implements OnInit {
     private lucroService: LucroService,
     private router: Router,
     private route: ActivatedRoute,
-    private toastyService: ToastyService
-  ) {}
+    private toastyService: ToastyService,
+    private bsLocaleService: BsLocaleService
+  ) {
+    this.bsLocaleService.use(this.locale);
+  }
 
   ngOnInit() {
     this.rocaId = this.route.snapshot.params.rocaId;
