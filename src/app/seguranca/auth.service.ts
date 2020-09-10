@@ -57,12 +57,9 @@ export class AuthService {
       .then(response => {
         this.armazenarToken(response.access_token);
 
-        console.log('Novo access token criado!');
-
         return Promise.resolve(null);
       })
       .catch(response => {
-        console.error('Erro ao renovar token.', response);
         return Promise.resolve(null);
       });
   }

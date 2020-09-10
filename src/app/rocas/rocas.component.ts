@@ -96,14 +96,14 @@ export class RocasComponent implements OnInit {
   }
 
   removeRoca(rocaId: string) {
-    this.rocasService.remove(rocaId).subscribe((result) => this.getRocas());
+    this.rocasService.remove(rocaId).subscribe(() => this.getRocas());
   }
 
   fechaRoca(roca: Roca) {
-    this.rocasService.fechaRoca(roca).subscribe((result) => this.getRocas());
+    this.rocasService.fechaRoca(roca).subscribe(() => this.getRocas());
   }
 
   abreRoca(roca: Roca) {
-    this.rocasService.fechaRoca(roca).subscribe((result) => this.getRocas());
+    this.rocasService.fechaRoca(roca).subscribe(() => this.getRocas());
   }
 }

@@ -1,3 +1,5 @@
+import { PrintComponent } from './print/print.component';
+import { TestComponent } from './test/test.component';
 import { NovoLucroComponent } from './lucro/novo-lucro/novo-lucro.component';
 import { AuthGuard } from './seguranca/auth.guard';
 import { NovaRocaComponent } from './rocas/nova-roca/nova-roca.component';
@@ -37,6 +39,16 @@ const routes: Routes = [
   {
     path: 'novo-lucro/:rocaId',
     component: NovoLucroComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'test',
+    component: TestComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'print',
+    component: PrintComponent,
     canActivate: [AuthGuard]
   },
   {

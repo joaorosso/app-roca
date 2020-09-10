@@ -2,6 +2,7 @@
     <button type="button"
             class="btn btn-sm btn-outline-secondary"
             routerLink="/nova-roca">
+        <i class="fa fa-plus"></i>
         Nova roça
     </button>
     <div class="btn-toolbar mb-2 mb-md-0">
@@ -26,16 +27,17 @@
     <table class="table table-striped table-sm">
         <thead>
             <tr>
-                <th>NOME</th>
-                <th>DESPESAS</th>
-                <th>VENDAS</th>
-                <th>RESULTADO</th>
-                <th>AÇÕES</th>
+                <th class="th-lg"
+                    scope="col">NOME</th>
+                <th scope="col">DESPESAS</th>
+                <th scope="col">VENDAS</th>
+                <th scope="col">RESULTADO</th>
+                <th scope="col" style="width: 25%;">AÇÕES</th>
             </tr>
         </thead>
         <tbody *ngIf="!loading">
-            <tr *ngFor="let roca of rocas">
-                <td>{{roca.descricao}}</td>
+            <tr *ngFor="let roca of rocas" [ngClass]="{'table-warning': roca.fechado}">
+                <td scope="row">{{roca.descricao}}</td>
                 <td>{{roca.despesa | currency : 'BRL'}}</td>
                 <td>{{roca.lucro | currency : 'BRL'}}</td>
                 <td>{{roca.lucro - roca.despesa | currency : 'BRL'}}</td>
@@ -54,6 +56,9 @@
                             *ngIf="roca.fechado">
                         ABRIR
                     </button>
+                    <span *ngIf="roca.fechado">
+                        {{roca.dataFechamento | date : 'shortDate'}}
+                    </span>
                 </td>
             </tr>
         </tbody>

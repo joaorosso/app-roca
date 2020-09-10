@@ -2,12 +2,20 @@
     <button type="button"
             class="btn btn-sm btn-outline-secondary"
             routerLink="/inicio">
+        <i class="fa fa-arrow-left"></i>
         Voltar
     </button>
     <div class="roca-title">
         {{roca?.descricao}}
     </div>
     <div class="btn-toolbar mb-2 mb-md-0">
+        <button type="button"
+                class="btn btn-sm btn-outline-secondary mr-2"
+                *ngIf="false">
+            <i class="fa fa-print"></i>
+            Imprimir
+        </button>
+
         <div class="btn-group mr-2">
             <button type="button"
                     class="btn btn-sm btn-outline-secondary active">Despesas</button>
@@ -19,6 +27,7 @@
                 class="btn btn-sm btn-outline-secondary"
                 [routerLink]="['/nova-despesa', rocaId]"
                 *ngIf="!roca?.fechado">
+            <i class="fa fa-plus"></i>
             Nova despesa
         </button>
     </div>

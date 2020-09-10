@@ -1,0 +1,21 @@
+table {
+    width: 100%;
+  }
+
+.grid-header {
+    height: 41px;
+    padding: 5px 10px;
+
+    button {
+        color: white;
+    }
+}
+
+.checkbox-column {
+    width: 40px;
+    text-align: center;
+
+    input {
+        cursor: pointer;
+    }
+}

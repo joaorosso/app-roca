@@ -54,6 +54,10 @@ export class RocasService {
       );
   }
 
+  removeAll(ids: string[]): Observable<any> {
+    return this.http.delete(this.rocasUrl, {body: ids});
+  }
+
   fechaRoca(roca: Roca): Observable<any> {
     roca.fechado = !roca.fechado;
     return this.http.put(this.rocasUrl + `/${roca.id}`, roca)

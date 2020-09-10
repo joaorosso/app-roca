@@ -1,3 +1,4 @@
+import { MatTableModule } from '@angular/material/table';
 import { MoneyHttp } from './seguranca/money-http';
 import { SegurancaModule } from './seguranca/seguranca.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -21,6 +22,9 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
 import { NovaDespesaComponent } from './despesas/nova-despesa/nova-despesa.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { NovoLucroComponent } from './lucro/novo-lucro/novo-lucro.component';
+import { GridComponent } from './shared/grid/grid.component';
+import { TestComponent } from './test/test.component';
+import { PrintComponent } from './print/print.component';
 
 registerLocaleData(localeBr);
 
@@ -33,7 +37,10 @@ registerLocaleData(localeBr);
     NovaRocaComponent,
     ConfirmationDialogComponent,
     NovaDespesaComponent,
-    NovoLucroComponent
+    NovoLucroComponent,
+    GridComponent,
+    TestComponent,
+    PrintComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +49,7 @@ registerLocaleData(localeBr);
     HttpClientModule,
     ReactiveFormsModule,
     SegurancaModule,
+    MatTableModule,
     ToastyModule.forRoot(),
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot()
