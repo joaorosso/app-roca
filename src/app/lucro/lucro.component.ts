@@ -20,7 +20,7 @@ export class LucroComponent implements OnInit {
   lucro: number;
   rocaId: string;
   modalRef: BsModalRef;
-  loading: boolean;
+  loading: any = {};
 
   constructor(
     private route: ActivatedRoute,
@@ -45,11 +45,24 @@ export class LucroComponent implements OnInit {
   }
 
   getLucros(): void {
-    this.loading = true;
+    this.loading.init = true;
     this.lucroService.getLucros(this.rocaId)
     .subscribe(lucros => {
       this.lucros = lucros;
-      this.loading = false;
+      this.loading.init = false;
+    });
+  }
+
+  download() {
+    this.loading.download = true;
+    this.lucroService.download(this.rocaId).subscribe((blob) => {
+      const fileURL: any = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = fileURL;
+      a.target = '_blank';
+      a.download = 'relatorio-vendas.pdf';
+      a.click();
+      this.loading.download = false;
     });
   }
 

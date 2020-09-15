@@ -27,4 +27,10 @@ export class LucroService {
   remove(id: string): Observable<any> {
     return this.http.delete(this.lucrosUrl + `/${id}`);
   }
+
+  download(rocaId: string): Observable<any> {
+    return this.http.get(this.lucrosUrl + `/report/${rocaId}`, {
+      responseType: 'blob',
+    });
+  }
 }
