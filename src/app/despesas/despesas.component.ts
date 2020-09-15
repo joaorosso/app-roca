@@ -10,13 +10,13 @@ import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confi
 @Component({
   selector: 'app-despesas',
   templateUrl: './despesas.component.html',
-  styleUrls: ['./despesas.component.scss']
+  styleUrls: ['./despesas.component.scss'],
 })
 export class DespesasComponent implements OnInit {
   despesas: Despesa[];
   roca: Roca;
   total: number;
-  rocaId: number;
+  rocaId: string;
   modalRef: BsModalRef;
   loading: boolean;
 
@@ -25,7 +25,7 @@ export class DespesasComponent implements OnInit {
     private rocasService: RocasService,
     private despesasService: DespesasService,
     private modalService: BsModalService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.rocaId = this.route.snapshot.params.rocaId;
@@ -35,16 +35,14 @@ export class DespesasComponent implements OnInit {
   }
 
   getRoca() {
-    this.rocasService.getRoca(this.rocaId)
-      .subscribe(roca => {
-        this.roca = roca;
-      });
+    this.rocasService.getRoca(this.rocaId).subscribe((roca) => {
+      this.roca = roca;
+    });
   }
 
   getDespesas() {
     this.loading = true;
-    this.despesasService.getDespesas(this.rocaId)
-    .subscribe(despesas => {
+    this.despesasService.getDespesas(this.rocaId).subscribe((despesas) => {
       this.despesas = despesas;
       this.getTotal();
       this.loading = false;
@@ -52,8 +50,19 @@ export class DespesasComponent implements OnInit {
   }
 
   getTotal() {
-    this.despesas.forEach(despesa => {
+    this.despesas.forEach((despesa) => {
       this.total += despesa.total;
+    });
+  }
+
+  download() {
+    this.despesasService.download(this.rocaId).subscribe((blob) => {
+      const fileURL: any = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = fileURL;
+      a.target = '_blank';
+      a.download = 'relatorio-despesas.pdf';
+      a.click();
     });
   }
 

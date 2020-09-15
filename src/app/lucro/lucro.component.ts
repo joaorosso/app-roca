@@ -18,7 +18,7 @@ export class LucroComponent implements OnInit {
   total: number;
   totalDespesas: number;
   lucro: number;
-  rocaId: number;
+  rocaId: string;
   modalRef: BsModalRef;
   loading: boolean;
 

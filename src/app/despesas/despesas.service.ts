@@ -11,9 +11,7 @@ import { MoneyHttp } from '../seguranca/money-http';
 export class DespesasService {
   private despesasUrl = environment.apiUrl + '/despesas';
 
-  constructor(
-    private http: MoneyHttp
-  ) {}
+  constructor(private http: MoneyHttp) {}
 
   getDespesas(rocaId): Observable<Despesa[]> {
     const url = `${this.despesasUrl}/roca/${rocaId}`;
@@ -26,5 +24,11 @@ export class DespesasService {
 
   remove(id: string): Observable<any> {
     return this.http.delete(this.despesasUrl + `/${id}`);
+  }
+
+  download(rocaId: string): Observable<any> {
+    return this.http.get(this.despesasUrl + `/report/${rocaId}`, {
+      responseType: 'blob',
+    });
   }
 }

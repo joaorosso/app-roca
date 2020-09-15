@@ -31,7 +31,7 @@ export class RocasService {
       );
   }
 
-  getRoca(id: number): Observable<Roca> {
+  getRoca(id: string): Observable<Roca> {
     const url = `${this.rocasUrl}/${id}`;
     return this.http.get<Roca>(url)
       .pipe(
