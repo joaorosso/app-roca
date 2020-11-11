@@ -34,13 +34,11 @@ export class AuthService {
         this.armazenarToken(response.access_token);
       })
       .catch(response => {
-        if (response.status === 400) {
-          if (response.error === 'invalid_grant') {
-            return Promise.reject('Usuário ou senha inválida!');
-          }
+        if (response && response.status === 400 && response.error.error === 'invalid_grant') {
+          return Promise.reject('Usuário ou senha inválidos!');
+        } else {
+          return Promise.reject('Ocorreu um erro. Por favor, tente novamente.');
         }
-
-        return Promise.reject(response);
       });
   }
 

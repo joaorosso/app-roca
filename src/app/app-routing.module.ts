@@ -9,6 +9,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { RocasComponent } from './rocas/rocas.component';
 import { NovaDespesaComponent } from './despesas/nova-despesa/nova-despesa.component';
+import { AdminComponent } from './admin/admin.component';
+import { UsuarioComponent } from './admin/usuario/usuario.component';
 
 const routes: Routes = [
   {
@@ -49,6 +51,21 @@ const routes: Routes = [
   {
     path: 'print',
     component: PrintComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'usuario',
+    component: UsuarioComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'usuario/:id',
+    component: UsuarioComponent,
     canActivate: [AuthGuard]
   },
   {

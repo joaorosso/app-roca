@@ -1,3 +1,5 @@
+<h3>Test</h3>
+
 <div class="grid-header bg-dark">
     <button type="button"
             class="btn btn-link btn-sm"
@@ -17,80 +19,30 @@
 </div>
 
 <table mat-table
-       #table
-       [dataSource]="tableDataSrc"
+       [dataSource]="data"
        class="mat-elevation-z8">
     <ng-container matColumnDef="descricao">
         <th mat-header-cell
-            *matHeaderCellDef> Descrição </th>
+            *matHeaderCellDef> DESCRIÇÃO </th>
         <td mat-cell
             *matCellDef="let roca"> {{ roca.descricao }} </td>
     </ng-container>
 
     <ng-container matColumnDef="despesa">
         <th mat-header-cell
-            *matHeaderCellDef> Despesas </th>
+            *matHeaderCellDef> DESPESAS </th>
         <td mat-cell
-            *matCellDef="let roca"> {{ roca.despesa }} </td>
+            *matCellDef="let roca"> {{ roca.despesa | currency : 'BRL' }} </td>
     </ng-container>
 
     <ng-container matColumnDef="lucro">
         <th mat-header-cell
-            *matHeaderCellDef> Vendas </th>
+            *matHeaderCellDef> VENDAS </th>
         <td mat-cell
-            *matCellDef="let roca"> {{ roca.lucro }} </td>
+            *matCellDef="let roca"> {{ roca.lucro | currency : 'BRL' }} </td>
     </ng-container>
     <tr mat-header-row
         *matHeaderRowDef="tableCols"></tr>
     <tr mat-row
         *matRowDef="let row; columns: tableCols"></tr>
 </table>
-
-<!-- <div class="table-responsive">
-    <table class="table table-striped table-sm">
-        <thead>
-            <tr>
-                <th></th>
-                <th>NOME</th>
-                <th>DESPESAS</th>
-                <th>VENDAS</th>
-                <th>RESULTADO</th>
-            </tr>
-        </thead>
-        <tbody *ngIf="!loading">
-            <tr *ngFor="let item of items">
-                <td class="checkbox-column">
-                    <div>
-                        <input type="checkbox"
-                               [value]="item.selected"
-                               (change)="change(item.id)">
-                    </div>
-                </td>
-                <td *ngFor="let row of tableItem">
-                    {{item.descricao}}
-                </td>
-                <td>{{item.descricao}}</td>
-                <td>{{item.despesa | currency : 'BRL'}}</td>
-                <td>{{item.lucro | currency : 'BRL'}}</td>
-                <td>{{item.lucro - item.despesa | currency : 'BRL'}}</td>
-                <td>
-                    <button class="btn btn-sm btn-info"
-                            [routerLink]="['/despesas', roca.id]"><i class="fa fa-eye"></i></button>
-
-                    <button class="btn btn-sm btn-warning"
-                            (click)="abrir(roca)"
-                            *ngIf="roca.fechado">
-                        ABRIR
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div *ngIf="loading"
-         class="text-center">
-        <div class="spinner-border text-secondary"
-             role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-</div> -->

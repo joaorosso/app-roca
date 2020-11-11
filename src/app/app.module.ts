@@ -16,7 +16,7 @@ import { LucroComponent } from './lucro/lucro.component';
 import { registerLocaleData } from '@angular/common';
 import { RocasComponent } from './rocas/rocas.component';
 import { NovaRocaComponent } from './rocas/nova-roca/nova-roca.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 import { NovaDespesaComponent } from './despesas/nova-despesa/nova-despesa.component';
@@ -25,6 +25,9 @@ import { NovoLucroComponent } from './lucro/novo-lucro/novo-lucro.component';
 import { GridComponent } from './shared/grid/grid.component';
 import { TestComponent } from './test/test.component';
 import { PrintComponent } from './print/print.component';
+import { AdminComponent } from './admin/admin.component';
+import { UsuarioComponent } from './admin/usuario/usuario.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 registerLocaleData(localeBr);
 
@@ -40,7 +43,9 @@ registerLocaleData(localeBr);
     NovoLucroComponent,
     GridComponent,
     TestComponent,
-    PrintComponent
+    PrintComponent,
+    AdminComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,9 @@ registerLocaleData(localeBr);
     MatTableModule,
     ToastyModule.forRoot(),
     ModalModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    NgSelectModule,
+    FormsModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatTable, MatTableModule } from '@angular/material/table';
+import { MatTable } from '@angular/material/table';
 
 @Component({
   selector: 'app-grid',
@@ -7,20 +7,21 @@ import { MatTableDataSource, MatTable, MatTableModule } from '@angular/material/
   styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent implements OnInit, OnChanges {
-  tableDataSrc: any;
   tableCols: string[] = ['descricao', 'despesa', 'lucro'];
-
-  @Input() items: {}[];
-  @Input() tableItem: any[];
+  private _data = [];
+  @Input() set data(values: any[]) {
+    if (values && values.length > 0) {
+      this._data = values;
+    }
+  }
+  get data(): any[] {
+    return this._data;
+  }
 
   @Input() loading: boolean;
   @Output() removeEmit = new EventEmitter();
   @Output() addItem = new EventEmitter();
   selectedItems: string[];
-
-  // @ViewChild('table', {static: false}) table: MatTable<Element>;
-  @ViewChild('table') table: MatTable<Element>;
-  // @ViewChild(MatTable) table: MatTable<any>;
 
   constructor() {}
 
@@ -29,9 +30,6 @@ export class GridComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    console.log(this.items);
-    this.tableDataSrc = new MatTableDataSource(this.items);
-    this.table.renderRows();
   }
 
   remove() {

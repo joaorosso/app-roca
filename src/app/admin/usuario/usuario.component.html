@@ -1,0 +1,72 @@
+<form [formGroup]="form"
+      (ngSubmit)="onSubmit()">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-3">
+        <button type="button"
+                class="btn btn-sm btn-outline-secondary"
+                [routerLink]="'/admin'">
+            <i class="fa fa-arrow-left"></i>
+            Voltar
+        </button>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <button type="submit"
+                    class="btn btn-sm btn-outline-success"
+                    [disabled]="!form.valid || loading">
+                <span *ngIf="loading"
+                      class="spinner-border spinner-border-sm mr-1"></span>
+                Salvar
+            </button>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="nome"
+               class="col-sm-2 col-form-label">Nome</label>
+        <div class="col-sm-10">
+            <input type="text"
+                   class="form-control"
+                   id="nome"
+                   formControlName="nome"
+                   autofocus
+                   required>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="username"
+               class="col-sm-2 col-form-label">Username</label>
+        <div class="col-sm-10">
+            <input type="text"
+                   class="form-control"
+                   id="username"
+                   formControlName="username"
+                   required>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="password"
+               class="col-sm-2 col-form-label">Senha</label>
+        <div class="col-sm-10">
+            <input type="password"
+                   class="form-control"
+                   id="password"
+                   formControlName="password"
+                   required>
+        </div>
+    </div>
+
+    <div *ngIf="permissoes && permissoes.length > 0"
+         class="form-group row">
+        <label for="permissoes"
+               class="col-sm-2 col-form-label">Permissões</label>
+        <div class="col-sm-10">
+            <ng-select [items]="permissoes"
+                       bindLabel="descricao"
+                       appendTo="body"
+                       multiple="true"
+                       formControlName="permissoes">
+            </ng-select>
+        </div>
+    </div>
+
+</form>
