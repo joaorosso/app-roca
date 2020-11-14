@@ -74,7 +74,7 @@ export class AuthService {
   }
 
   temPermissao(permissao: string) {
-    return this.jwtPayload && this.jwtPayload.authorities.includes(permissao);
+    return this.jwtPayload && this.jwtPayload.authorities && this.jwtPayload.authorities.includes(permissao);
   }
 
   temQualquerPermissao(roles) {

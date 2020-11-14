@@ -6,7 +6,7 @@ import { NovaRocaComponent } from './rocas/nova-roca/nova-roca.component';
 import { DespesasComponent } from './despesas/despesas.component';
 import { LucroComponent } from './lucro/lucro.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, CanActivate } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { RocasComponent } from './rocas/rocas.component';
 import { NovaDespesaComponent } from './despesas/nova-despesa/nova-despesa.component';
 import { AdminComponent } from './admin/admin.component';

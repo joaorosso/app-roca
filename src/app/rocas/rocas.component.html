@@ -32,11 +32,13 @@
                 <th scope="col">DESPESAS</th>
                 <th scope="col">VENDAS</th>
                 <th scope="col">RESULTADO</th>
-                <th scope="col" style="width: 25%;">AÇÕES</th>
+                <th scope="col"
+                    style="width: 25%;">AÇÕES</th>
             </tr>
         </thead>
         <tbody *ngIf="!loading">
-            <tr *ngFor="let roca of rocas" [ngClass]="{'table-warning': roca.fechado}">
+            <tr *ngFor="let roca of rocas"
+                [ngClass]="{'table-warning': roca.fechado}">
                 <td scope="row">{{roca.descricao}}</td>
                 <td>{{roca.despesa | currency : 'BRL'}}</td>
                 <td>{{roca.lucro | currency : 'BRL'}}</td>
@@ -45,6 +47,7 @@
                     <button class="btn btn-sm btn-info"
                             [routerLink]="['/despesas', roca.id]"><i class="fa fa-eye"></i></button>
                     <button class="btn btn-sm btn-danger"
+                            *ngIf="auth.temPermissao('ROLE_ADMIN')"
                             (click)="remover(roca)"><i class="fa fa-trash"></i></button>
                     <button class="btn btn-sm btn-warning"
                             (click)="fechar(roca)"

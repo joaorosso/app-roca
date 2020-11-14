@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Roca } from '../models/roca';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
+import { AuthService } from '../seguranca/auth.service';
 
 @Component({
   selector: 'app-despesas',
@@ -24,7 +25,8 @@ export class DespesasComponent implements OnInit {
     private route: ActivatedRoute,
     private rocasService: RocasService,
     private despesasService: DespesasService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    public auth: AuthService
   ) {}
 
   ngOnInit(): void {

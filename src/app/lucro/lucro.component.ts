@@ -6,6 +6,7 @@ import { Roca } from '../models/roca';
 import { RocasService } from '../rocas/rocas.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
+import { AuthService } from '../seguranca/auth.service';
 
 @Component({
   selector: 'app-lucro',
@@ -26,7 +27,8 @@ export class LucroComponent implements OnInit {
     private route: ActivatedRoute,
     private rocasService: RocasService,
     private lucroService: LucroService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    public auth: AuthService
   ) { }
 
   ngOnInit(): void {

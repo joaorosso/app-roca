@@ -1,23 +1,18 @@
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-  <div class="navbar-brand col-md-3 col-lg-2 px-md-5">
-    <i class="fa fa-leaf"></i>
-    FRUTAR
-  </div>
-  <ul class="navbar-nav px-3">
-    <li *ngIf="mostraSair()" class="nav-item text-nowrap">
-      <a class="nav-link" (click)="logout()">Sair</a>
-    </li>
-  </ul>
-</nav>
+<div *ngIf="exibindoNavbar()"
+     class="d-flex align-items-center border-bottom shadow-sm">
+  <h5 class="my-0 mr-auto"><i class="fa fa-leaf"></i> FRUTAR</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <div class="p-2 text-dark">
+      <i class="fa fa-user"></i>
+      {{ username }}
+    </div>
+  </nav>
+  <a class="btn btn-outline-secondary btn-sm"
+     (click)="logout()">Sair</a>
+</div>
 
 <div class="container-fluid">
-  <div class="row">
-
-    <main role="main"
-          class="col-md-12 px-md-5 pt-3">
-      <router-outlet></router-outlet>
-    </main>
-  </div>
+  <router-outlet></router-outlet>
 </div>
 
 <ng2-toasty [position]="'top-center'"></ng2-toasty>

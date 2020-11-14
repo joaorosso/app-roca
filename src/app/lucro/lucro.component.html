@@ -58,6 +58,7 @@
                 <td>{{lucro.total | currency : 'BRL'}}</td>
                 <td>
                     <button class="btn btn-sm btn-danger"
+                            *ngIf="auth.temPermissao('ROLE_ADMIN')"
                             (click)="remover(lucro)"><i class="fa fa-trash"></i></button>
                 </td>
             </tr>

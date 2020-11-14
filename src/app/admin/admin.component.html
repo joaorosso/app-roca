@@ -17,6 +17,7 @@
         <thead>
             <tr>
                 <th>NOME</th>
+                <th>USUÁRIO</th>
                 <th>PERMISSÕES</th>
                 <th>AÇÔES</th>
             </tr>
@@ -24,6 +25,7 @@
         <tbody *ngIf="!loading.init">
             <tr *ngFor="let usuario of usuarios">
                 <td>{{usuario.nome}}</td>
+                <td>{{usuario.username}}</td>
                 <td>
                     <span *ngIf="isUserAdmin(usuario)" class="badge badge-primary">ADMIN</span>
                 </td>
