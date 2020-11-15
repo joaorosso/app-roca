@@ -31,7 +31,7 @@
                     scope="col">NOME</th>
                 <th scope="col">DESPESAS</th>
                 <th scope="col">VENDAS</th>
-                <th scope="col">RESULTADO</th>
+                <th *ngIf="auth.temPermissao('ROLE_ADMIN')" scope="col">RESULTADO</th>
                 <th scope="col"
                     style="width: 25%;">AÇÕES</th>
             </tr>
@@ -42,7 +42,7 @@
                 <td scope="row">{{roca.descricao}}</td>
                 <td>{{roca.despesa | currency : 'BRL'}}</td>
                 <td>{{roca.lucro | currency : 'BRL'}}</td>
-                <td>{{roca.lucro - roca.despesa | currency : 'BRL'}}</td>
+                <td *ngIf="auth.temPermissao('ROLE_ADMIN')">{{roca.lucro - roca.despesa | currency : 'BRL'}}</td>
                 <td>
                     <button class="btn btn-sm btn-info"
                             [routerLink]="['/despesas', roca.id]"><i class="fa fa-eye"></i></button>
