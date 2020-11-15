@@ -74,12 +74,14 @@
     </div>
 </div>
 
-<div class="total">
-    TOTAL: {{roca?.lucro | currency : 'BRL'}}
-</div>
-<div class="despesas">
-    DESPESAS: {{roca?.despesa | currency : 'BRL'}}
-</div>
-<div class="lucro">
-    VENDAS: {{roca?.lucro - roca?.despesa | currency : 'BRL'}}
+<div *ngIf="auth.temPermissao('ROLE_ADMIN')">
+    <div class="total">
+        TOTAL: {{roca?.lucro | currency : 'BRL'}}
+    </div>
+    <div class="despesas">
+        DESPESAS: {{roca?.despesa | currency : 'BRL'}}
+    </div>
+    <div class="lucro">
+        VENDAS: {{roca?.lucro - roca?.despesa | currency : 'BRL'}}
+    </div>
 </div>

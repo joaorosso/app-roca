@@ -1,5 +1,5 @@
 import { AuthService } from './seguranca/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ToastyConfig, ToastyService } from 'ng2-toasty';
 import { Router } from '@angular/router';
 import { LogoutService } from './seguranca/logout.service';
@@ -9,7 +9,7 @@ import { LogoutService } from './seguranca/logout.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   isLogged = false;
   username: string;
 
@@ -21,10 +21,6 @@ export class AppComponent implements OnInit {
     public auth: AuthService
   ) {
     this.toastyConfig.theme = 'bootstrap';
-  }
-
-  ngOnInit(): void {
-    this.username = this.auth.jwtPayload?.user_name;
   }
 
   exibindoNavbar() {
