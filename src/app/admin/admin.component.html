@@ -27,13 +27,14 @@
                 <td>{{usuario.nome}}</td>
                 <td>{{usuario.username}}</td>
                 <td>
-                    <span *ngIf="isUserAdmin(usuario)" class="badge badge-primary">ADMIN</span>
+                    <span *ngIf="isUserAdmin(usuario)"
+                          class="badge badge-primary">ADMIN</span>
                 </td>
                 <td>
                     <button class="btn btn-sm btn-danger"
                             (click)="remover(usuario)"><i class="fa fa-trash"></i></button>
                     <button class="btn btn-sm btn-primary"
-                    [routerLink]="['/usuario', usuario.id]"><i class="fa fa-pencil"></i></button>
+                            [routerLink]="['/usuario', usuario.id]"><i class="fa fa-pencil"></i></button>
                 </td>
             </tr>
         </tbody>

@@ -7,7 +7,7 @@ import { SelectionModel } from '@angular/cdk/collections';
   styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent implements OnInit {
-  tableCols: string[] = ['select', 'descricao', 'despesa', 'lucro'];
+  tableCols: string[] = ['select', 'descricao', 'despesa', 'lucro', 'action'];
   private data = [];
 
   @Input() set dataSource(values: any[]) {
@@ -40,6 +40,7 @@ export class GridComponent implements OnInit {
 
   remove() {
     if (this.selection.selected.length > 0) {
+      console.log(this.selection.selected);
       // this.removeEmit.emit(this.selection.selected);
     }
   }
@@ -47,6 +48,10 @@ export class GridComponent implements OnInit {
   add() {
     console.log(this.selection.selected);
     // this.addItem.emit();
+  }
+
+  viewRow(row) {
+    console.log(row);
   }
 
   isAnySelected() {

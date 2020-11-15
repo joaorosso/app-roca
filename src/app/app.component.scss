@@ -1,26 +1,26 @@
 .row {
-    max-width: 1024px;
+  max-width: 1024px;
 }
 
 .navbar-nav {
-    cursor: pointer;
+  cursor: pointer;
 
-    a {
-        color: white;
-    }
+  a {
+    color: white;
+  }
 }
 
 .d-flex {
-    height: 50px;
-    margin-bottom: 20px;
-    padding: 0 200px;
-    h5 {
-        font-size: initial;
-    }
+  height: 50px;
+  margin-bottom: 20px;
+  padding: 0 200px;
+  h5 {
+    font-size: initial;
+  }
 }
 
 @media (max-width: 1200px) {
-    .d-flex {
-        padding: 0 10px;
-    }
+  .d-flex {
+    padding: 0 10px;
   }
+}

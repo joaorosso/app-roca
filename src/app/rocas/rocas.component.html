@@ -45,7 +45,7 @@
                 <td *ngIf="auth.temPermissao('ROLE_ADMIN')">{{roca.lucro - roca.despesa | currency : 'BRL'}}</td>
                 <td>
                     <button class="btn btn-sm btn-info"
-                            [routerLink]="['/despesas', roca.id]"><i class="fa fa-eye"></i></button>
+                            [routerLink]="['/despesas', roca.id]">VER</button>
                     <button class="btn btn-sm btn-danger"
                             *ngIf="auth.temPermissao('ROLE_ADMIN')"
                             (click)="remover(roca)"><i class="fa fa-trash"></i></button>

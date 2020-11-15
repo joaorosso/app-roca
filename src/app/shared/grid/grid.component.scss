@@ -1,6 +1,10 @@
 table {
   width: 100%;
   margin-bottom: 30px;
+
+  th.mat-header-cell.cdk-header-cell.cdk-column-action.mat-column-action {
+    width: 100px;
+  }
 }
 
 .grid-header {
@@ -9,14 +13,5 @@ table {
 
   button {
     color: white;
-  }
-}
-
-.checkbox-column {
-  width: 40px;
-  text-align: center;
-
-  input {
-    cursor: pointer;
   }
 }
