@@ -2,6 +2,7 @@ import { RocasModule } from './rocas/rocas.module';
 import { LucroModule } from './lucro/lucro.module';
 import { AdminModule } from './admin/admin.module';
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MoneyHttp } from './seguranca/money-http';
 import { SegurancaModule } from './seguranca/seguranca.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -39,17 +40,15 @@ registerLocaleData(localeBr);
     HttpClientModule,
     SegurancaModule,
     MatTableModule,
+    MatCheckboxModule,
     ToastyModule.forRoot(),
     ModalModule.forRoot(),
     AdminModule,
     DespesasModule,
     LucroModule,
-    RocasModule
+    RocasModule,
   ],
-  providers: [
-    { provide: LOCALE_ID, useValue: 'pt' },
-    MoneyHttp
-  ],
-  bootstrap: [AppComponent]
+  providers: [{ provide: LOCALE_ID, useValue: 'pt' }, MoneyHttp],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
