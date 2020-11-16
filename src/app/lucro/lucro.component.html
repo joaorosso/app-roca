@@ -60,6 +60,9 @@
                     <button class="btn btn-sm btn-danger"
                             *ngIf="auth.temPermissao('ROLE_ADMIN')"
                             (click)="remover(lucro)"><i class="fa fa-trash"></i></button>
+
+                    <button class="btn btn-sm btn-primary"
+                            [routerLink]="['/novo-lucro', lucro.rocaId, lucro.id]"><i class="fa fa-pencil"></i></button>
                 </td>
             </tr>
         </tbody>

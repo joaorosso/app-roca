@@ -18,6 +18,7 @@ export class NovoLucroComponent implements OnInit {
   locales = listLocales();
 
   rocaId: string;
+  lucroId: string;
   form: FormGroup;
   loading: boolean;
 
@@ -34,23 +35,59 @@ export class NovoLucroComponent implements OnInit {
 
   ngOnInit() {
     this.rocaId = this.route.snapshot.params.rocaId;
+    this.lucroId = this.route.snapshot.params.lucroId;
+
     this.form = this.fb.group({
       rocaId: this.rocaId,
+      id: '',
       data: new Date(),
       descricao: ['', Validators.required],
       quantidade: [0, Validators.required],
       valorUnitario: [0, Validators.required],
     });
+
+    if (this.lucroId) {
+      this.getLucro();
+    }
+  }
+
+  getLucro() {
+    this.lucroService.getLucro(this.lucroId).subscribe(
+      (data) => this.mapLucro(data),
+      (err) => this.toastyService.error(err)
+    );
+  }
+
+  mapLucro(result) {
+    result.data = new Date(result.data);
+    this.form.patchValue(result);
   }
 
   onSubmit() {
     if (this.form.valid) {
       this.loading = true;
-      this.lucroService.salvar(this.form.value).subscribe(
-        () => this.router.navigate(['/lucros', this.rocaId]),
-        (err) => this.toastyService.error(err.error.message)
-      );
+      if (this.isEdit) {
+        this.update();
+      } else {
+        this.save();
+      }
     }
+  }
+
+  save() {
+    this.lucroService.salvar(this.form.value).subscribe(
+      () => this.router.navigate(['/lucros', this.rocaId]),
+      (err) => this.toastyService.error(err.error.message),
+      () => (this.loading = false)
+    );
+  }
+
+  update() {
+    this.lucroService.update(this.form.value).subscribe(
+      () => this.router.navigate(['/lucros', this.rocaId]),
+      (err) => this.toastyService.error(err.error.message),
+      () => (this.loading = false)
+    );
   }
 
   total(): number {
@@ -63,5 +100,9 @@ export class NovoLucroComponent implements OnInit {
 
   get valorUnitario(): number {
     return this.form.get('valorUnitario').value;
+  }
+
+  get isEdit() {
+    return Boolean(this.form.get('id').value);
   }
 }

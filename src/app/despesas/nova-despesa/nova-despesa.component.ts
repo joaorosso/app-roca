@@ -17,6 +17,7 @@ export class NovaDespesaComponent implements OnInit {
   locale = 'pt-br';
   locales = listLocales();
   rocaId: string;
+  despesaId: string;
   form: FormGroup;
   loading: boolean;
 
@@ -33,23 +34,59 @@ export class NovaDespesaComponent implements OnInit {
 
   ngOnInit() {
     this.rocaId = this.route.snapshot.params.rocaId;
+    this.despesaId = this.route.snapshot.params.despesaId;
+
     this.form = this.fb.group({
       rocaId: this.rocaId,
+      id: '',
       data: new Date(),
       descricao: ['', Validators.required],
       quantidade: [0, Validators.required],
       valorUnitario: [0, Validators.required],
     });
+
+    if (this.despesaId) {
+      this.getDespesa();
+    }
+  }
+
+  getDespesa() {
+    this.despesasService.getDespesa(this.despesaId).subscribe(
+      (data) => this.mapDespesa(data),
+      (err) => this.toastyService.error(err)
+    );
+  }
+
+  mapDespesa(result) {
+    result.data = new Date(result.data);
+    this.form.patchValue(result);
   }
 
   onSubmit() {
     if (this.form.valid) {
       this.loading = true;
-      this.despesasService.salvar(this.form.value).subscribe(
-        () => this.router.navigate(['/despesas', this.rocaId]),
-        (err) => this.toastyService.error(err.error.message)
-      );
+      if (this.isEdit) {
+        this.update();
+      } else {
+        this.save();
+      }
     }
+  }
+
+  save() {
+    this.despesasService.salvar(this.form.value).subscribe(
+      () => this.router.navigate(['/despesas', this.rocaId]),
+      (err) => this.toastyService.error(err.error.message),
+      () => (this.loading = false)
+    );
+  }
+
+  update() {
+    this.despesasService.salvar(this.form.value).subscribe(
+      () => this.router.navigate(['/despesas', this.rocaId]),
+      (err) => this.toastyService.error(err.error.message),
+      () => (this.loading = false)
+    );
   }
 
   total(): number {
@@ -62,5 +99,9 @@ export class NovaDespesaComponent implements OnInit {
 
   get valorUnitario(): number {
     return this.form.get('valorUnitario').value;
+  }
+
+  get isEdit() {
+    return Boolean(this.form.get('id').value);
   }
 }

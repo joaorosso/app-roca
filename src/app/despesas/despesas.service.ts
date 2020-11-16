@@ -18,8 +18,17 @@ export class DespesasService {
     return this.http.get<Despesa[]>(url);
   }
 
+  getDespesa(despesaId): Observable<Despesa> {
+    const url = `${this.despesasUrl}/${despesaId}`;
+    return this.http.get<Despesa>(url);
+  }
+
   salvar(despesa: Despesa): Observable<Despesa> {
     return this.http.post<Despesa>(this.despesasUrl, despesa);
+  }
+
+  update(despesa: Despesa): Observable<Despesa> {
+    return this.http.put<Despesa>(this.despesasUrl + `/${despesa.id}`, despesa);
   }
 
   remove(id: string): Observable<any> {

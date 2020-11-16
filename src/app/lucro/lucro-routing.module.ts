@@ -14,6 +14,11 @@ const routes: Routes = [
     path: 'novo-lucro/:rocaId',
     component: NovoLucroComponent,
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'novo-lucro/:rocaId/:lucroId',
+    component: NovoLucroComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

@@ -60,6 +60,9 @@
                     <button class="btn btn-sm btn-danger"
                             *ngIf="auth.temPermissao('ROLE_ADMIN')"
                             (click)="remover(despesa)"><i class="fa fa-trash"></i></button>
+
+                    <button class="btn btn-sm btn-primary"
+                            [routerLink]="['/nova-despesa', despesa.rocaId, despesa.id]"><i class="fa fa-pencil"></i></button>
                 </td>
             </tr>
         </tbody>
@@ -74,6 +77,7 @@
     </div>
 </div>
 
-<div class="total" *ngIf="auth.temPermissao('ROLE_ADMIN')">
+<div class="total"
+     *ngIf="auth.temPermissao('ROLE_ADMIN')">
     DESPESA TOTAL: {{total | currency : 'BRL'}}
 </div>

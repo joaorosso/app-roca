@@ -20,8 +20,17 @@ export class LucroService {
     return this.http.get<Lucro[]>(url);
   }
 
+  getLucro(lucroId): Observable<Lucro> {
+    const url = `${this.lucrosUrl}/${lucroId}`;
+    return this.http.get<Lucro>(url);
+  }
+
   salvar(lucro: Lucro): Observable<Lucro> {
     return this.http.post<Lucro>(this.lucrosUrl, lucro);
+  }
+
+  update(lucro: Lucro): Observable<Lucro> {
+    return this.http.put<Lucro>(this.lucrosUrl + `/${lucro.id}`, lucro);
   }
 
   remove(id: string): Observable<any> {

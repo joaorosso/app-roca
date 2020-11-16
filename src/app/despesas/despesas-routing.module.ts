@@ -16,6 +16,11 @@ const routes: Routes = [
     component: NovaDespesaComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'nova-despesa/:rocaId/:despesaId',
+    component: NovaDespesaComponent,
+    canActivate: [AuthGuard],
+  }
 ];
 
 @NgModule({

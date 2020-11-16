@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastyService } from 'ng2-toasty';
-import { PermissaoService } from 'src/app/despesas/permissao.service';
+import { PermissaoService } from 'src/app/admin/permissao.service';
 import { UsuarioService } from '../usuario.service';
 
 @Component({
