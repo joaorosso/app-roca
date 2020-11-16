@@ -7,7 +7,6 @@ import { SelectionModel } from '@angular/cdk/collections';
   styleUrls: ['./grid.component.scss'],
 })
 export class GridComponent implements OnInit {
-  tableCols: string[] = ['select', 'descricao', 'despesa', 'lucro', 'action'];
   private data = [];
 
   @Input() set dataSource(values: any[]) {
@@ -21,21 +20,22 @@ export class GridComponent implements OnInit {
   }
 
   @Input() loading: boolean;
+  @Input() columns: any[];
   @Output() removeEmit = new EventEmitter();
   @Output() addItem = new EventEmitter();
   selectedItems: string[];
+  tableCols: any[];
 
   selection = new SelectionModel<any>(true, []);
 
   constructor() {}
 
   ngOnInit(): void {
-    const initialSelection = [];
-    const allowMultiSelect = true;
-    this.selection = new SelectionModel<any>(
-      allowMultiSelect,
-      initialSelection
-    );
+    this.tableCols = this.columns.map((x) => x.columnDef);
+    this.tableCols.unshift('select');
+    this.tableCols.push('action');
+
+    this.selection = new SelectionModel<any>(true, []);
   }
 
   remove() {

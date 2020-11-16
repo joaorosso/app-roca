@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "heroku-postbuild": "ng build --prod",
+    "clean": "rm -rf node_modules && rm -rf package-lock.json"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +32,7 @@
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
+    "bootstrap": "^4.5.3",
     "codelyzer": "^5.1.2",
     "font-awesome": "^4.7.0",
     "jasmine-core": "~3.5.0",
@@ -40,6 +42,7 @@
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~3.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "ng2-currency-mask": "^9.0.2",
     "ng2-toasty": "^4.0.3",
     "ngx-bootstrap": "^6.1.0",
     "protractor": "~5.4.3",

@@ -41,7 +41,7 @@ export class NovaDespesaComponent implements OnInit {
       id: '',
       data: new Date(),
       descricao: ['', Validators.required],
-      quantidade: [0, Validators.required],
+      quantidade: [1, Validators.required],
       valorUnitario: [0, Validators.required],
     });
 

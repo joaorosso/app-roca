@@ -1,3 +1,6 @@
+<h3>Roças</h3>
+
 <app-grid (removeEmit)="removeItems($event)"
           (addItem)="addItem()"
+          [columns]="columns"
           [dataSource]="rocas$ | async"></app-grid>

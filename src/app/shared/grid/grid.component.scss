@@ -1,3 +1,12 @@
+.grid-header {
+  height: 41px;
+  padding: 5px 10px;
+
+  button {
+    color: white;
+  }
+}
+
 table {
   width: 100%;
   margin-bottom: 30px;
@@ -7,11 +16,22 @@ table {
   }
 }
 
-.grid-header {
-  height: 41px;
-  padding: 5px 10px;
+.mat-row:hover {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.25);
+  transform: scale(1);
+  cursor: pointer;
+}
 
-  button {
-    color: white;
+.mat-checkbox {
+  .mat-checkbox-inner-container {
+    margin-top: 5px;
+  }
+}
+
+.mat-row {
+  .mat-checkbox-layout {
+    margin-bottom: 0;
   }
 }

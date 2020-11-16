@@ -6,14 +6,44 @@ import { RocasService } from '../rocas/rocas.service';
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
-  styleUrls: ['./test.component.scss']
+  styleUrls: ['./test.component.scss'],
 })
 export class TestComponent implements OnInit {
   rocas$: Observable<Roca[]>;
 
-  constructor(
-    private rocasService: RocasService
-    ) { }
+  /** Table columns */
+  columns = [
+    {
+      columnDef: 'descricao',
+      header: 'DESCRIÇÃO',
+      cell: (row: any) => row.descricao,
+    },
+    {
+      columnDef: 'despesa',
+      header: 'DESPESA',
+      cell: (row: any) => row.despesa || 0,
+      isCurrency: true,
+    },
+    {
+      columnDef: 'lucro',
+      header: 'LUCRO',
+      cell: (row: any) => row.lucro || 0,
+      isCurrency: true,
+    },
+  ];
+
+  buttons = [
+    {
+      type: 'view',
+      url: 'despesas'
+    },
+    {
+      type: 'close',
+      url: ''
+    }
+  ];
+
+  constructor(private rocasService: RocasService) {}
 
   ngOnInit(): void {
     this.rocas$ = this.rocasService.getRocas(status);
@@ -41,5 +71,4 @@ export class TestComponent implements OnInit {
     console.log('add item');
     // this.router.navigate(['/nova-roca']);
   }
-
 }
