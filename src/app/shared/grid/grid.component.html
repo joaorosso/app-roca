@@ -37,8 +37,9 @@
             </mat-checkbox>
         </td>
     </ng-container>
-    
-    <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+
+    <ng-container *ngFor="let column of columns"
+                  [matColumnDef]="column.columnDef">
         <th mat-header-cell
             *matHeaderCellDef> {{ column.header }} </th>
         <td mat-cell
@@ -53,8 +54,11 @@
             *matHeaderCellDef> AÇÔES </th>
         <td mat-cell
             *matCellDef="let item">
-            <button class="btn btn-sm btn-outline-secondary"
-                    [routerLink]="['/usuario', item.id]"><i class="fa fa-pencil"></i> Editar</button>
+            <button *ngFor="let button of buttons"
+                    class="btn btn-sm btn-outline-secondary"
+                    (click)="open(button.url, item.id)">
+                <i [class]="button.icon"></i> {{ button.text }}
+            </button>
         </td>
     </ng-container>
 

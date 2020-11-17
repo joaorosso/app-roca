@@ -3,4 +3,5 @@
 <app-grid (removeEmit)="removeItems($event)"
           (addItem)="addItem()"
           [columns]="columns"
+          [buttons]="buttons"
           [dataSource]="rocas$ | async"></app-grid>

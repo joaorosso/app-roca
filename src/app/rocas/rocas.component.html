@@ -51,12 +51,12 @@
                             (click)="remover(roca)"><i class="fa fa-trash"></i></button>
                     <button class="btn btn-sm btn-warning"
                             (click)="fechar(roca)"
-                            *ngIf="!roca.fechado">
+                            *ngIf="!roca.fechado && auth.temPermissao('ROLE_ADMIN')">
                         FECHAR
                     </button>
                     <button class="btn btn-sm btn-warning"
                             (click)="abrir(roca)"
-                            *ngIf="roca.fechado">
+                            *ngIf="roca.fechado && auth.temPermissao('ROLE_ADMIN')">
                         ABRIR
                     </button>
                     <span *ngIf="roca.fechado">

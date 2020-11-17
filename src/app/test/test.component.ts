@@ -35,11 +35,9 @@ export class TestComponent implements OnInit {
   buttons = [
     {
       type: 'view',
-      url: 'despesas'
-    },
-    {
-      type: 'close',
-      url: ''
+      url: 'despesas',
+      icon: 'fa fa-pencil',
+      text: 'Editar'
     }
   ];
 

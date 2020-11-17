@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-grid',
@@ -21,14 +22,16 @@ export class GridComponent implements OnInit {
 
   @Input() loading: boolean;
   @Input() columns: any[];
+  @Input() buttons: any[];
   @Output() removeEmit = new EventEmitter();
+  @Output() actionEmit = new EventEmitter();
   @Output() addItem = new EventEmitter();
   selectedItems: string[];
   tableCols: any[];
 
   selection = new SelectionModel<any>(true, []);
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.tableCols = this.columns.map((x) => x.columnDef);
@@ -48,6 +51,10 @@ export class GridComponent implements OnInit {
   add() {
     console.log(this.selection.selected);
     // this.addItem.emit();
+  }
+
+  open(url, id) {
+    this.router.navigate(['/' + url, id]);
   }
 
   viewRow(row) {
