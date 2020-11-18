@@ -15,6 +15,7 @@ export class RocasComponent implements OnInit {
   modalRef: BsModalRef;
   status: string;
   loading: boolean;
+  balance = 0;
 
   constructor(
     private rocasService: RocasService,
@@ -41,12 +42,21 @@ export class RocasComponent implements OnInit {
     this.getRocas();
   }
 
-  getRocas(status: string = null): void {
+  getRocas(status: string = null) {
     this.loading = true;
     this.rocasService.getRocas(status).subscribe((rocas) => {
+      this.getBalance(rocas);
       this.rocas = rocas;
       this.loading = false;
     });
+  }
+
+  getBalance(rocas: Roca[]) {
+    let balance = 0;
+    rocas.forEach(roca => {
+      balance += roca.lucro - roca.despesa;
+    });
+    this.balance = balance;
   }
 
   remover(roca: Roca) {

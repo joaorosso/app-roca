@@ -29,9 +29,12 @@
             <tr>
                 <th class="th-lg"
                     scope="col">NOME</th>
-                <th *ngIf="auth.temPermissao('ROLE_ADMIN')" scope="col">DESPESAS</th>
-                <th *ngIf="auth.temPermissao('ROLE_ADMIN')" scope="col">VENDAS</th>
-                <th *ngIf="auth.temPermissao('ROLE_ADMIN')" scope="col">RESULTADO</th>
+                <th *ngIf="auth.temPermissao('ROLE_ADMIN')"
+                    scope="col">DESPESAS</th>
+                <th *ngIf="auth.temPermissao('ROLE_ADMIN')"
+                    scope="col">VENDAS</th>
+                <th *ngIf="auth.temPermissao('ROLE_ADMIN')"
+                    scope="col">RESULTADO</th>
                 <th scope="col"
                     style="width: 25%;">AÇÕES</th>
             </tr>
@@ -63,6 +66,12 @@
                         {{roca.dataFechamento | date : 'shortDate'}}
                     </span>
                 </td>
+            </tr>
+
+            <tr class="font-weight-bold"
+                *ngIf="auth.temPermissao('ROLE_ADMIN')">
+                <td colspan="3">SALDO</td>
+                <td colspan="2">{{balance | currency : 'BRL'}}</td>
             </tr>
         </tbody>
     </table>
