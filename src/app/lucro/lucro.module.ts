@@ -8,6 +8,7 @@ import { LucroComponent } from './lucro.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CurrencyMaskModule, CURRENCY_MASK_CONFIG } from 'ng2-currency-mask';
 import { CURRENCY_MASK } from '../shared/config/currency-mask-config';
+import { BsDropdownConfig, BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [LucroComponent, NovoLucroComponent],
@@ -17,8 +18,15 @@ import { CURRENCY_MASK } from '../shared/config/currency-mask-config';
     ReactiveFormsModule,
     LucroRoutingModule,
     BsDatepickerModule.forRoot(),
-    CurrencyMaskModule
+    BsDropdownModule.forRoot(),
+    CurrencyMaskModule,
   ],
-  providers: [{ provide: CURRENCY_MASK_CONFIG, useValue: CURRENCY_MASK }]
+  providers: [
+    { provide: CURRENCY_MASK_CONFIG, useValue: CURRENCY_MASK },
+    {
+      provide: BsDropdownConfig,
+      useValue: { isAnimated: true, autoClose: true },
+    },
+  ],
 })
 export class LucroModule {}

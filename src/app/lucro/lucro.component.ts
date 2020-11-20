@@ -55,14 +55,28 @@ export class LucroComponent implements OnInit {
     });
   }
 
-  download() {
+  downloadPdf() {
     this.loading.download = true;
-    this.lucroService.download(this.rocaId).subscribe((blob) => {
-      const fileURL: any = URL.createObjectURL(blob);
+    this.lucroService.downloadPdf(this.rocaId).subscribe((data) => {
+      const url: any = URL.createObjectURL(data);
       const a = document.createElement('a');
-      a.href = fileURL;
+      a.href = url;
       a.target = '_blank';
       a.download = 'relatorio-vendas.pdf';
+      a.click();
+      this.loading.download = false;
+    });
+  }
+
+  downloadExcel() {
+    this.loading.download = true;
+    this.lucroService.downloadExcel(this.rocaId).subscribe((data) => {
+      const blob = new Blob([data], { type: 'application/octet-stream' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.download = 'planilha-vendas.xlsx';
       a.click();
       this.loading.download = false;
     });

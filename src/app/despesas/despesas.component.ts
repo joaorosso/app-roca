@@ -1,3 +1,4 @@
+import { ToastyService } from 'ng2-toasty';
 import { DespesasService } from './despesas.service';
 import { RocasService } from './../rocas/rocas.service';
 import { Component, OnInit } from '@angular/core';
@@ -7,6 +8,7 @@ import { Roca } from '../models/roca';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
 import { AuthService } from '../seguranca/auth.service';
+import { EROFS } from 'constants';
 
 @Component({
   selector: 'app-despesas',
@@ -26,7 +28,8 @@ export class DespesasComponent implements OnInit {
     private rocasService: RocasService,
     private despesasService: DespesasService,
     private modalService: BsModalService,
-    public auth: AuthService
+    public auth: AuthService,
+    private toastyService: ToastyService
   ) {}
 
   ngOnInit(): void {
@@ -57,14 +60,28 @@ export class DespesasComponent implements OnInit {
     });
   }
 
-  download() {
+  downloadPdf() {
     this.loading.download = true;
-    this.despesasService.download(this.rocaId).subscribe((blob) => {
-      const fileURL: any = URL.createObjectURL(blob);
+    this.despesasService.downloadPdf(this.rocaId).subscribe((data) => {
+      const url: any = URL.createObjectURL(data);
       const a = document.createElement('a');
-      a.href = fileURL;
+      a.href = url;
       a.target = '_blank';
       a.download = 'relatorio-despesas.pdf';
+      a.click();
+      this.loading.download = false;
+    });
+  }
+
+  downloadExcel() {
+    this.loading.download = true;
+    this.despesasService.downloadExcel(this.rocaId).subscribe((data) => {
+      const blob = new Blob([data], { type: 'application/octet-stream' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.target = '_blank';
+      a.download = 'planilha-despesas.xlsx';
       a.click();
       this.loading.download = false;
     });

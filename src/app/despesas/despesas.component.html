@@ -9,16 +9,28 @@
         {{roca?.descricao}}
     </div>
     <div class="btn-toolbar mb-2 mb-md-0">
-        <button type="button"
-                class="btn btn-sm btn-outline-secondary mr-2"
-                (click)="download()"
-                [disabled]="loading.download">
-            <i *ngIf="!loading.download"
-               class="fa fa-download"></i>
-            <span *ngIf="loading.download"
-                  class="spinner-border spinner-border-sm mr-1"></span>
-            Download
-        </button>
+        <div class="btn-group"
+             dropdown>
+            <button id="dropdown-button"
+                    dropdownToggle
+                    type="button"
+                    class="btn btn-sm btn-outline-secondary mr-2 dropdown-toggle"
+                    aria-controls="dropdown"
+                    [disabled]="loading.download">
+                <span *ngIf="loading.download"
+                      class="spinner-border spinner-border-sm mr-1"></span>
+                Download <span class="caret"></span>
+            </button>
+            <ul id="dropdown-ul"
+                *dropdownMenu
+                class="dropdown-menu"
+                role="menu">
+                <li role="menuitem"><a class="dropdown-item"
+                       (click)="downloadPdf()">PDF</a></li>
+                <li role="menuitem"><a class="dropdown-item"
+                       (click)="downloadExcel()">Excel</a></li>
+            </ul>
+        </div>
 
         <div class="btn-group mr-2">
             <button type="button"

@@ -35,8 +35,14 @@ export class DespesasService {
     return this.http.delete(this.despesasUrl + `/${id}`);
   }
 
-  download(rocaId: string): Observable<any> {
+  downloadPdf(rocaId: string): Observable<any> {
     return this.http.get(this.despesasUrl + `/report/${rocaId}`, {
+      responseType: 'blob',
+    });
+  }
+
+  downloadExcel(rocaId: string): Observable<any> {
+    return this.http.get(this.despesasUrl + `/excel/${rocaId}`, {
       responseType: 'blob',
     });
   }
