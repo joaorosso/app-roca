@@ -8,7 +8,6 @@ import { Roca } from '../models/roca';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
 import { AuthService } from '../seguranca/auth.service';
-import { EROFS } from 'constants';
 
 @Component({
   selector: 'app-despesas',
