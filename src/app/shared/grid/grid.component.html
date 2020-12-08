@@ -1,4 +1,4 @@
-<!-- <div class="grid-header bg-dark">
+<div class="grid-header bg-dark">
     <button type="button"
             class="btn btn-link btn-sm"
             (click)="add()">
@@ -14,7 +14,7 @@
             class="btn btn-link btn-sm">
         <i class="fa fa-print"></i> Imprimir
     </button>
-</div> -->
+</div>
 
 <table mat-table
        [dataSource]="dataSource"
@@ -68,4 +68,7 @@
     <tr mat-row
         (click)="viewRow(row)"
         *matRowDef="let row; columns: tableCols"></tr>
+
+    <tr mat-footer-row
+        *matFooterRowDef="tableCols"></tr>
 </table>

@@ -20,7 +20,6 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confirmation-dialog.component';
 import { GridComponent } from './shared/grid/grid.component';
 import { TestComponent } from './test/test.component';
-import { PrintComponent } from './print/print.component';
 import { DespesasModule } from './despesas/despesas.module';
 
 registerLocaleData(localeBr);
@@ -30,8 +29,7 @@ registerLocaleData(localeBr);
     AppComponent,
     ConfirmationDialogComponent,
     GridComponent,
-    TestComponent,
-    PrintComponent
+    TestComponent
   ],
   imports: [
     BrowserModule,

@@ -27,8 +27,7 @@ export class DespesasComponent implements OnInit {
     private rocasService: RocasService,
     private despesasService: DespesasService,
     private modalService: BsModalService,
-    public auth: AuthService,
-    private toastyService: ToastyService
+    public auth: AuthService
   ) {}
 
   ngOnInit(): void {
