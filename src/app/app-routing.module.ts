@@ -1,7 +1,8 @@
-import { TestComponent } from './test/test.component';
-import { AuthGuard } from './seguranca/auth.guard';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+import { TestComponent } from './test/test.component';
+import { AuthGuard } from './seguranca/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,7 +18,17 @@ const routes: Routes = [
   {
     path: 'rocas',
     loadChildren: () =>
-      import('./rocas/rocas.module').then((m) => m.RocasModule),
+      import('./modules/rocas/rocas.module').then((m) => m.RocasModule),
+  },
+  {
+    path: 'financeiro',
+    loadChildren: () =>
+      import('./modules/financeiro/financeiro.module').then((m) => m.FinanceiroModule),
+  },
+  {
+    path: 'estoque',
+    loadChildren: () =>
+      import('./modules/estoque/estoque.module').then((m) => m.EstoqueModule),
   },
   {
     path: 'despesas',
@@ -31,10 +42,10 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/inicio',
+    redirectTo: '/rocas',
     pathMatch: 'full',
   },
-  { path: 'nao-autorizado', redirectTo: '/inicio' }
+  { path: 'nao-autorizado', redirectTo: '' }
 ];
 
 @NgModule({

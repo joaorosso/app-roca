@@ -1,9 +1,9 @@
-import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs';
+
+import { environment } from './../../environments/environment';
 import { Despesa } from '../models/despesa';
-import { MoneyHttp } from '../seguranca/money-http';
+import { AppHttp } from '../seguranca/app-http';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,7 @@ import { MoneyHttp } from '../seguranca/money-http';
 export class DespesasService {
   private despesasUrl = environment.apiUrl + '/despesas';
 
-  constructor(private http: MoneyHttp) {}
+  constructor(private http: AppHttp) {}
 
   getDespesas(rocaId): Observable<Despesa[]> {
     const url = `${this.despesasUrl}/roca/${rocaId}`;

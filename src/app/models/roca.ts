@@ -4,4 +4,5 @@ export interface Roca {
     fechado: boolean;
     despesa: number;
     lucro: number;
+    dataFechamento: Date;
 }

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+
 import { Lucro } from '../models/lucro';
 import { LucroService } from './lucro.service';
-import { ActivatedRoute } from '@angular/router';
 import { Roca } from '../models/roca';
-import { RocasService } from '../rocas/rocas.service';
-import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { RocasService } from '../modules/rocas/rocas.service';
 import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
 import { AuthService } from '../seguranca/auth.service';
 

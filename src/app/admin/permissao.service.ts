@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Permissao } from '../models/permissao';
-import { MoneyHttp } from '../seguranca/money-http';
+import { AppHttp } from '../seguranca/app-http';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ import { MoneyHttp } from '../seguranca/money-http';
 export class PermissaoService {
   private permissaoUrl = environment.apiUrl + '/permissao';
 
-  constructor(private http: MoneyHttp) {}
+  constructor(private http: AppHttp) {}
 
   getAll(): Observable<Permissao[]> {
     return this.http.get<Permissao[]>(this.permissaoUrl);

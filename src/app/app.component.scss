@@ -2,25 +2,25 @@
   max-width: 1024px;
 }
 
-.navbar-nav {
-  cursor: pointer;
+.navbar {
+  background-color: #fff;
+}
 
-  a {
-    color: white;
-  }
+.sidebar {
+  width: 200px;
 }
 
 .d-flex {
   height: 50px;
   margin-bottom: 20px;
-  padding: 0 200px;
+  padding: 0 15px;
   h5 {
     font-size: initial;
   }
 }
 
-@media (max-width: 1200px) {
-  .d-flex {
-    padding: 0 10px;
-  }
-}
+// @media (max-width: 1200px) {
+//   .d-flex {
+//     padding: 0 10px;
+//   }
+// }

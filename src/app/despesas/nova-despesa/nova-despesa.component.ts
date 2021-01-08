@@ -20,6 +20,18 @@ export class NovaDespesaComponent implements OnInit {
   despesaId: string;
   form: FormGroup;
   loading: boolean;
+  items: any[] = [{
+    description: 'NITRATO DE CALCIO'
+  },
+  {
+    description: 'CLORETO DE POTASSIO'
+  },
+  {
+    description: 'ÁGUA'
+  },
+  {
+    description: 'ENERGIA'
+  }];
 
   constructor(
     private fb: FormBuilder,
@@ -42,7 +54,7 @@ export class NovaDespesaComponent implements OnInit {
       data: new Date(),
       descricao: ['', Validators.required],
       quantidade: [1, Validators.required],
-      valorUnitario: [0, Validators.required],
+      valorUnitario: [0, Validators.required]
     });
 
     if (this.despesaId) {

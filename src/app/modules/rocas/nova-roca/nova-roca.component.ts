@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
-import { RocasService } from './../rocas.service';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { RocasService } from './../rocas.service';
 
 @Component({
   selector: 'app-nova-roca',
@@ -25,7 +25,7 @@ export class NovaRocaComponent {
       this.loading = true;
       this.rocaService
         .salvaRoca(this.form.value)
-        .subscribe((roca) => this.route.navigate(['/inicio']));
+        .subscribe((roca) => this.route.navigate(['/rocas']));
     }
   }
 }

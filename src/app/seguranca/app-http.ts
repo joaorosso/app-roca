@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 export class NotAuthenticatedError {}
 
 @Injectable()
-export class MoneyHttp extends HttpClient {
+export class AppHttp extends HttpClient {
 
   constructor(
     private auth: AuthService,

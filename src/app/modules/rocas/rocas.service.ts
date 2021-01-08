@@ -1,11 +1,10 @@
-import { environment } from './../../environments/environment';
-import { MoneyHttp } from './../seguranca/money-http';
 import { Injectable } from '@angular/core';
-
-import { MessageService } from '../message.service';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Roca } from '../models/roca';
+
+import { Roca } from '../../models/roca';
+import { environment } from './../../../environments/environment';
+import { AppHttp } from '../../seguranca/app-http';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +14,7 @@ export class RocasService {
   private rocasUrl = environment.apiUrl + '/rocas';
 
   constructor(
-    private http: MoneyHttp,
-    private messageService: MessageService
+    private http: AppHttp
   ) { }
 
   getRocas(status: string): Observable<Roca[]> {
@@ -78,13 +76,11 @@ export class RocasService {
     return (error: any): Observable<T> => {
       console.error(error);
 
-      this.log(`${operation} failed: ${error.message}`);
-
       return of(result as T);
     };
   }
 
-  private log(message: string) {
-    this.messageService.add(`InicioService: ${message}`);
+  private log(test) {
+    return test;
   }
 }

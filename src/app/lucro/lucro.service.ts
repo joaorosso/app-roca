@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 import { Lucro } from '../models/lucro';
-import { MoneyHttp } from '../seguranca/money-http';
+import { AppHttp } from '../seguranca/app-http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,7 +12,7 @@ export class LucroService {
   private lucrosUrl = environment.apiUrl + '/lucros';
 
   constructor(
-    private http: MoneyHttp
+    private http: AppHttp
   ) {}
 
   getLucros(rocaId): Observable<Lucro[]> {

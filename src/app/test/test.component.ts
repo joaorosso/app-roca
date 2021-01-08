@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+
 import { Roca } from '../models/roca';
-import { RocasService } from '../rocas/rocas.service';
+import { RocasService } from '../modules/rocas/rocas.service';
 
 @Component({
   selector: 'app-test',

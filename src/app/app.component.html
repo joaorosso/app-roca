@@ -1,5 +1,5 @@
 <div *ngIf="exibindoNavbar()"
-     class="d-flex align-items-center border-bottom shadow-sm">
+     class="navbar d-flex sticky-top align-items-center border-bottom shadow-sm">
   <img class="manga"
        src="assets/images/manga.png">
   <h5 class="my-0 ml-2 mr-auto">
@@ -15,7 +15,57 @@
      (click)="logout()">Sair</a>
 </div>
 
+
+<!-- <header class="navbar navbar-light bg-light sticky-top flex-md-nowrap p-0 shadow">
+  <img class="manga"
+       src="assets/images/manga.png">
+       <h5 class="my-0 ml-2 mr-auto">
+        FRUTAR
+      </h5>
+  <ul class="navbar-nav px-3">
+    <li class="nav-item text-nowrap">
+      <a class="nav-link" href="#">Sair</a>
+    </li>
+  </ul>
+</header> -->
+
 <div class="container-fluid">
+  <nav *ngIf="exibindoNavbar()"
+       id="sidebarMenu"
+       class="sidebar bg-light">
+    <div class="position-sticky pt-3">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link"
+             [routerLink]="'/rocas'">
+            Início
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             [routerLink]="'/rocas'"
+             [routerLinkActive]="'active'">
+            Roças
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             [routerLink]="'/financeiro'"
+             [routerLinkActive]="'active'">
+            Financeiro
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"
+             [routerLink]="'/estoque'"
+             [routerLinkActive]="'active'">
+            Estoque
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
   <router-outlet></router-outlet>
 </div>
 

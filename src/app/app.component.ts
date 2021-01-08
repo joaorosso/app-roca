@@ -1,8 +1,9 @@
-import { AuthService } from './seguranca/auth.service';
 import { Component } from '@angular/core';
 import { ToastyConfig, ToastyService } from 'ng2-toasty';
 import { Router } from '@angular/router';
+
 import { LogoutService } from './seguranca/logout.service';
+import { AuthService } from './seguranca/auth.service';
 
 @Component({
   selector: 'app-root',

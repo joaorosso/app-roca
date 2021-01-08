@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from '../seguranca/auth.guard';
+import { AuthGuard } from '../../seguranca/auth.guard';
 import { NovaRocaComponent } from './nova-roca/nova-roca.component';
 import { RocasComponent } from './rocas.component';
 
 const routes: Routes = [
   {
-    path: 'inicio',
+    path: '',
     component: RocasComponent,
     canActivate: [AuthGuard],
   },

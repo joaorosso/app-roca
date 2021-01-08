@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { ToastyService } from 'ng2-toasty';
 import { Router } from '@angular/router';
-import { finalize } from 'rxjs/operators';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -32,7 +31,7 @@ export class LoginFormComponent implements OnInit {
     this.loading = true;
     this.auth.login(this.loginForm.value.username, this.loginForm.value.password)
       .then(() => {
-        this.router.navigate(['/inicio']);
+        this.router.navigate(['']);
       })
       .catch(erro => {
         this.toastyService.error(erro);

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Roca } from '../models/roca';
-import { RocasService } from './rocas.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { ConfirmationDialogComponent } from '../shared/confirmation-dialog/confirmation-dialog.component';
-import { AuthService } from '../seguranca/auth.service';
+
+import { Roca } from '../../models/roca';
+import { RocasService } from './rocas.service';
+import { ConfirmationDialogComponent } from '../../shared/confirmation-dialog/confirmation-dialog.component';
+import { AuthService } from '../../seguranca/auth.service';
 
 @Component({
   selector: 'app-rocas',

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Usuario } from '../models/usuario';
-import { MoneyHttp } from '../seguranca/money-http';
+import { AppHttp } from '../seguranca/app-http';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ import { MoneyHttp } from '../seguranca/money-http';
 export class UsuarioService {
   private usuarioUrl = environment.apiUrl + '/usuario';
 
-  constructor(private http: MoneyHttp) {}
+  constructor(private http: AppHttp) {}
 
   salvar(usuario: Usuario): Observable<Usuario> {
     return this.http.post<Usuario>(this.usuarioUrl, usuario);

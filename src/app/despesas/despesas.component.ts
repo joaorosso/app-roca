@@ -1,6 +1,6 @@
 import { ToastyService } from 'ng2-toasty';
 import { DespesasService } from './despesas.service';
-import { RocasService } from './../rocas/rocas.service';
+import { RocasService } from './../modules/rocas/rocas.service';
 import { Component, OnInit } from '@angular/core';
 import { Despesa } from '../models/despesa';
 import { ActivatedRoute } from '@angular/router';
