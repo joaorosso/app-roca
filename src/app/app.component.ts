@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ToastyConfig, ToastyService } from 'ng2-toasty';
 import { Router } from '@angular/router';
 
 import { LogoutService } from './seguranca/logout.service';
 import { AuthService } from './seguranca/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  isLogged = false;
-  username: string;
+export class AppComponent implements OnInit {
+
+  isLoggedIn$: Observable<boolean>;
 
   constructor(
     private logoutService: LogoutService,
@@ -24,8 +25,8 @@ export class AppComponent {
     this.toastyConfig.theme = 'bootstrap';
   }
 
-  exibindoNavbar() {
-    return this.router.url !== '/login';
+  ngOnInit() {
+    this.isLoggedIn$ = this.auth.isLoggedIn;
   }
 
   logout() {

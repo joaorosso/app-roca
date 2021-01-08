@@ -2,12 +2,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { BehaviorSubject } from 'rxjs';
 
 
 import { environment } from './../../environments/environment';
 
 @Injectable()
 export class AuthService {
+
+  loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  get isLoggedIn() {
+    return this.loggedIn.asObservable();
+  }
 
   oauthTokenUrl: string;
   jwtPayload: any;
@@ -31,6 +38,7 @@ export class AuthService {
         { headers, withCredentials: true })
       .toPromise()
       .then(response => {
+        this.loggedIn.next(true);
         this.armazenarToken(response.access_token);
       })
       .catch(response => {

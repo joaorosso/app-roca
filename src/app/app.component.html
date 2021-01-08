@@ -1,4 +1,4 @@
-<div *ngIf="exibindoNavbar()"
+<div *ngIf="isLoggedIn$ | async as isLoggedIn"
      class="navbar d-flex sticky-top align-items-center border-bottom shadow-sm">
   <img class="manga"
        src="assets/images/manga.png">
@@ -30,7 +30,7 @@
 </header> -->
 
 <div class="container-fluid">
-  <nav *ngIf="exibindoNavbar()"
+  <nav *ngIf="isLoggedIn$ | async as isLoggedIn"
        id="sidebarMenu"
        class="sidebar bg-light">
     <div class="position-sticky pt-3">

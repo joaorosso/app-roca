@@ -20,6 +20,7 @@ export class LogoutService {
     return this.http.delete(this.tokensRenokeUrl, { withCredentials: true })
       .toPromise()
       .then(() => {
+        this.auth.loggedIn.next(false);
         this.auth.limparAccessToken();
       });
   }
