@@ -1,5 +1,5 @@
-<div *ngIf="isLoggedIn$ | async as isLoggedIn"
-     class="navbar d-flex sticky-top align-items-center border-bottom shadow-sm">
+<div *ngIf="exibindoNavbar()"
+     class="navbar fixed-top align-items-center border-bottom shadow-sm">
   <img class="manga"
        src="assets/images/manga.png">
   <h5 class="my-0 ml-2 mr-auto">
@@ -15,22 +15,8 @@
      (click)="logout()">Sair</a>
 </div>
 
-
-<!-- <header class="navbar navbar-light bg-light sticky-top flex-md-nowrap p-0 shadow">
-  <img class="manga"
-       src="assets/images/manga.png">
-       <h5 class="my-0 ml-2 mr-auto">
-        FRUTAR
-      </h5>
-  <ul class="navbar-nav px-3">
-    <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Sair</a>
-    </li>
-  </ul>
-</header> -->
-
 <div class="container-fluid">
-  <nav *ngIf="isLoggedIn$ | async as isLoggedIn"
+  <nav *ngIf="exibindoNavbar()"
        id="sidebarMenu"
        class="sidebar bg-light">
     <div class="position-sticky pt-3">

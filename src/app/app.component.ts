@@ -25,8 +25,10 @@ export class AppComponent implements OnInit {
     this.toastyConfig.theme = 'bootstrap';
   }
 
-  ngOnInit() {
-    this.isLoggedIn$ = this.auth.isLoggedIn;
+  ngOnInit() {}
+
+  exibindoNavbar() {
+    return this.router.url !== '/login';
   }
 
   logout() {
